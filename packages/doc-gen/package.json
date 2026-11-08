@@ -1,7 +1,7 @@
 {
   "name": "@pixpilot/doc-gen",
   "type": "module",
-  "version": "0.0.0",
+  "version": "0.1.0",
   "packageManager": "pnpm@10.34.5",
   "description": "Generate database diagrams (Drizzle) and API route lists (tRPC) for project docs, and check them in CI.",
   "author": "Mo Doaie <m.doaie@hotmail.com>",
