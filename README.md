@@ -39,6 +39,9 @@ pnpm run gen:package
 
 Check project documentation maps, links and tasks in local workflows and CI.
 
+### [doc-gen](./packages/doc-gen/README.md)
+
+Generate database diagrams (Drizzle) and API route lists (tRPC) for project docs, and check them in CI.
 
 ## 🚢 Releases
 

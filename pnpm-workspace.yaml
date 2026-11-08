@@ -4,9 +4,17 @@ packages:
 
 catalogs:
   testing:
+    '@trpc/server': 11.19.0
     '@vitest/coverage-v8': ^5.0.5
     '@vitest/ui': ^5.0.5
+    drizzle-orm: 0.45.4
+    jsdom: 30.1.3
+    mermaid: 12.2.0
     vitest: ^5.0.5
+    zod: 4.6.7
+
+  prod:
+    jiti: ^2.7.0
 
   build:
     '@pixpilot/tsdown-config': ^0.8.3

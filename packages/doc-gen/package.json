@@ -1,0 +1,96 @@
+{
+  "name": "@pixpilot/doc-gen",
+  "type": "module",
+  "version": "0.0.0",
+  "packageManager": "pnpm@10.34.5",
+  "description": "Generate database diagrams (Drizzle) and API route lists (tRPC) for project docs, and check them in CI.",
+  "author": "Mo Doaie <m.doaie@hotmail.com>",
+  "license": "MIT",
+  "homepage": "https://github.com/pixpilot/docs-tools",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/pixpilot/docs-tools.git",
+    "directory": "packages/doc-gen"
+  },
+  "bugs": {
+    "url": "https://github.com/pixpilot/docs-tools/issues"
+  },
+  "keywords": [
+    "documentation",
+    "drizzle",
+    "trpc",
+    "mermaid",
+    "ci"
+  ],
+  "sideEffects": false,
+  "exports": "./src/index.ts",
+  "bin": {
+    "doc-gen": "./dist/cli.js"
+  },
+  "files": [
+    "dist"
+  ],
+  "publishConfig": {
+    "access": "public",
+    "registry": "https://registry.npmjs.org",
+    "exports": {
+      ".": {
+        "import": {
+          "types": "./dist/index.d.ts",
+          "default": "./dist/index.js"
+        },
+        "require": {
+          "types": "./dist/index.d.cts",
+          "default": "./dist/index.cjs"
+        }
+      }
+    },
+    "main": "./dist/index.cjs",
+    "module": "./dist/index.js",
+    "types": "./dist/index.d.ts"
+  },
+  "engines": {
+    "node": ">=24.15.0"
+  },
+  "scripts": {
+    "prepublishOnly": "pnpm run clean && pnpm run build",
+    "clean": "git clean -xdf .cache .turbo dist",
+    "clean:all": "pnpm clean && git clean -xdf node_modules",
+    "build": "tsdown",
+    "build:watch": "tsdown --watch",
+    "test": "vitest --run --passWithNoTests",
+    "test:watch": "vitest --watch",
+    "test:ui": "vitest --ui --watch",
+    "test:ui:coverage": "vitest --ui --coverage --watch --hookTimeout=30000 --coverage.thresholds.lines=0 --coverage.thresholds.functions=0 --coverage.thresholds.branches=0 --coverage.thresholds.statements=0",
+    "test:coverage": "vitest --coverage",
+    "typecheck": "tsc --noEmit",
+    "lint": "eslint",
+    "format": "prettier --check . --ignore-path ../../.gitignore --ignore-path ../../.prettierignore"
+  },
+  "peerDependencies": {
+    "typescript": ">=5.0.0"
+  },
+  "dependencies": {
+    "jiti": "catalog:prod"
+  },
+  "devDependencies": {
+    "@internal/eslint-config": "workspace:*",
+    "@internal/prettier-config": "workspace:*",
+    "@internal/tsconfig": "workspace:*",
+    "@internal/tsdown-config": "workspace:*",
+    "@internal/vitest-config": "workspace:*",
+    "@trpc/server": "catalog:testing",
+    "@types/node": "catalog:typescript",
+    "@vitest/coverage-v8": "catalog:testing",
+    "@vitest/ui": "catalog:testing",
+    "drizzle-orm": "catalog:testing",
+    "eslint": "catalog:lint",
+    "jsdom": "catalog:testing",
+    "mermaid": "catalog:testing",
+    "tsdown": "catalog:build",
+    "typescript": "catalog:typescript",
+    "vitest": "catalog:testing",
+    "zod": "catalog:testing"
+  },
+  "prettier": "@internal/prettier-config"
+}
