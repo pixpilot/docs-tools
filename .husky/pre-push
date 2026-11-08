@@ -1,0 +1,28 @@
+#!/usr/bin/env sh
+
+if [ -n "$CI" ]; then
+	echo "Skipping pre-push in CI"
+	exit 0
+fi
+
+# Refuse to push a project made from this template back into the template.
+# A clone keeps `origin` pointing here, so judge what is pushed, not where:
+# the template's own commits keep its package name and have no stackforge.jsonc.
+TEMPLATE_REPO=pnpm-turbo-monorepo-template
+case "${2%.git}" in
+*/"$TEMPLATE_REPO")
+	while read -r _local_ref local_sha _remote_ref _remote_sha; do
+		# An all-zero sha is a branch deletion: nothing is published.
+		case "$local_sha" in *[!0]*) ;; *) continue ;; esac
+		if git cat-file -e "$local_sha:stackforge.jsonc" 2>/dev/null ||
+			! git show "$local_sha:package.json" 2>/dev/null | grep -q "\"name\": *\"$TEMPLATE_REPO\""; then
+			echo "Blocked: this push would publish a project into the $TEMPLATE_REPO template ($2)." >&2
+			echo "Point origin at the project's own repository: git remote set-url origin <url>" >&2
+			exit 1
+		fi
+	done
+	;;
+esac
+
+echo "Running tests before push..."
+pnpm test

@@ -1,0 +1,23 @@
+{
+  "name": "@internal/tsconfig",
+  "type": "module",
+  "version": "0.1.0",
+  "private": true,
+  "exports": {
+    "./base.json": "./base.json"
+  },
+  "files": [
+    "*.json"
+  ],
+  "scripts": {
+    "lint": "eslint",
+    "format": "prettier --check . --ignore-path ../../.gitignore --ignore-path ../../.prettierignore"
+  },
+  "devDependencies": {
+    "@pixpilot/dev-config": "catalog:config",
+    "@types/node": "catalog:typescript",
+    "eslint": "catalog:lint",
+    "prettier": "catalog:format",
+    "typescript": "catalog:typescript"
+  }
+}

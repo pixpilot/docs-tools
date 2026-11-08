@@ -1,0 +1,31 @@
+{
+  "name": "@internal/tsdown-config",
+  "type": "module",
+  "version": "0.1.0",
+  "private": true,
+  "exports": {
+    ".": {
+      "types": "./index.d.ts",
+      "import": "./index.js"
+    }
+  },
+  "scripts": {
+    "clean:all": "git clean -xdf .cache .turbo node_modules",
+    "typecheck": "tsc --noEmit",
+    "lint": "eslint",
+    "format": "prettier --check . --ignore-path ../../.gitignore --ignore-path ../../.prettierignore"
+  },
+  "dependencies": {
+    "@pixpilot/tsdown-config": "catalog:build",
+    "tsdown": "catalog:build"
+  },
+  "devDependencies": {
+    "@internal/eslint-config": "workspace:*",
+    "@internal/tsconfig": "workspace:*",
+    "@pixpilot/dev-config": "catalog:config",
+    "@types/node": "catalog:typescript",
+    "glob": "catalog:build",
+    "typescript": "catalog:typescript"
+  },
+  "prettier": "@internal/prettier-config"
+}
