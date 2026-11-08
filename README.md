@@ -35,7 +35,10 @@ pnpm run gen:package
 
 ## 📦 Packages
 
-<!-- List your packages here -->
+### [doc-check](./packages/doc-check/README.md)
+
+Check project documentation maps, links and tasks in local workflows and CI.
+
 
 ## 🚢 Releases
 

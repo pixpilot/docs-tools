@@ -1,7 +1,7 @@
 {
   "name": "@pixpilot/doc-check",
   "type": "module",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "packageManager": "pnpm@10.34.5",
   "description": "Check project documentation maps, links and tasks in local workflows and CI.",
   "author": "Mo Doaie <m.doaie@hotmail.com>",
