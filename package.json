@@ -1,15 +1,25 @@
 {
-  "name": "pnpm-turbo-monorepo-template",
+  "name": "docs-tools",
+  "version": "0.0.0",
   "private": true,
   "packageManager": "pnpm@10.34.9",
+  "prettier": "@internal/prettier-config",
+  "author": "Mo Doaie <m.doaie@hotmail.com>",
+  "license": "MIT",
+  "homepage": "https://github.com/pixpilot/docs-tools",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/pixpilot/docs-tools.git"
+  },
+  "bugs": {
+    "url": "https://github.com/pixpilot/docs-tools/issues"
+  },
   "engines": {
     "node": ">=24.15.0",
     "pnpm": ">=9.6.0"
   },
   "scripts": {
-    "setup": "npx @pixpilot/scaffoldfy@latest --config ./setup/scaffoldfy.json",
     "prepare": "husky",
-    "pnpm:devPreinstall": "node setup/guard.mjs block",
     "preinstall": "npx only-allow pnpm",
     "build": "turbo run build",
     "tsc:watch": "pnpm exec tsc --noEmit --watch --project tsconfig.watch.json",
@@ -31,7 +41,8 @@
     "deps:update": "npx taze -r -w && pnpm install",
     "deps:update:major": "npx taze major -r -w && pnpm install",
     "gen:package": "npx @pixpilot/scaffoldfy@latest --config ./generators/package/scaffoldfy.jsonc",
-    "changeset": "changeset"
+    "changeset": "changeset",
+    "generate-packages-section": "node scripts/generate-packages-section.js"
   },
   "devDependencies": {
     "@changesets/cli": "catalog:git",
@@ -52,6 +63,5 @@
     "turbo": "catalog:build",
     "typescript": "catalog:typescript",
     "vitest": "catalog:testing"
-  },
-  "prettier": "@internal/prettier-config"
+  }
 }

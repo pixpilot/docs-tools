@@ -1,4 +1,4 @@
-# Contributing to <projectName>
+# Contributing to Docs Tools
 
 Thank you for your interest in contributing! 🎉
 
